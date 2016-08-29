@@ -1,0 +1,109 @@
+(function() {
+  var Modifier;
+
+  Modifier = require('../lib/stream-modifiers/regex');
+
+  describe('Stream Modifiers - Regular Expression', function() {
+    var config, mod, output, perm, temp;
+    mod = null;
+    config = null;
+    output = null;
+    temp = null;
+    perm = null;
+    beforeEach(function() {
+      config = {
+        regex: '(?<file> .+?\\.(?:txt|html)):(?<row> \\d+)\\s(?<message>.+)',
+        defaults: 'type: \'warning\''
+      };
+      output = {
+        absolutePath: jasmine.createSpy('absolutePath').andCallFake(function(r) {
+          return r;
+        })
+      };
+      Modifier.activate();
+      mod = new Modifier.modifier(config, null, output);
+      temp = {};
+      return perm = {};
+    });
+    afterEach(function() {
+      return Modifier.deactivate();
+    });
+    it('creates the regular expression', function() {
+      return expect(mod.regex).toBeDefined();
+    });
+    it('parses the defaults', function() {
+      return expect(mod["default"].type).toBe('warning');
+    });
+    describe('On matching line', function() {
+      beforeEach(function() {
+        temp.input = 'test.txt:10 Hello';
+        return mod.modify({
+          temp: temp,
+          perm: perm
+        });
+      });
+      it('fills temp and perm with correct values', function() {
+        expect(temp.file).toBe('test.txt');
+        expect(temp.row).toBe('10');
+        expect(temp.message).toBe('Hello');
+        expect(perm.file).toBe('test.txt');
+        expect(perm.row).toBe('10');
+        return expect(perm.message).toBe('Hello');
+      });
+      return describe('::getFiles', function() {
+        var ret;
+        ret = null;
+        beforeEach(function() {
+          return ret = mod.getFiles({
+            temp: temp,
+            perm: perm
+          });
+        });
+        return it('returns the correct file array', function() {
+          return expect(ret).toEqual([
+            {
+              file: 'test.txt',
+              start: 0,
+              end: 7,
+              row: '10',
+              col: void 0
+            }
+          ]);
+        });
+      });
+    });
+    return describe('On other lines', function() {
+      beforeEach(function() {
+        temp.input = 'Something else';
+        return mod.modify({
+          temp: temp,
+          perm: perm
+        });
+      });
+      it('doesn\'t fill temp and perm with values', function() {
+        expect(temp).toEqual({
+          input: 'Something else'
+        });
+        return expect(perm).toEqual({});
+      });
+      return describe('::getFiles', function() {
+        var ret;
+        ret = null;
+        beforeEach(function() {
+          return ret = mod.getFiles({
+            temp: temp,
+            perm: perm
+          });
+        });
+        return it('returns an empty array', function() {
+          return expect(ret.length).toBe(0);
+        });
+      });
+    });
+  });
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAiZmlsZSI6ICIiLAogICJzb3VyY2VSb290IjogIiIsCiAgInNvdXJjZXMiOiBbCiAgICAiL2hvbWUvbml2Ly5hdG9tL3BhY2thZ2VzL2J1aWxkLXRvb2xzL3NwZWMvc3RyZWFtLW1vZGlmaWVyLXJlZ2V4LXNwZWMuY29mZmVlIgogIF0sCiAgIm5hbWVzIjogW10sCiAgIm1hcHBpbmdzIjogIkFBQUE7QUFBQSxNQUFBLFFBQUE7O0FBQUEsRUFBQSxRQUFBLEdBQVcsT0FBQSxDQUFRLCtCQUFSLENBQVgsQ0FBQTs7QUFBQSxFQUVBLFFBQUEsQ0FBUyx1Q0FBVCxFQUFrRCxTQUFBLEdBQUE7QUFDaEQsUUFBQSwrQkFBQTtBQUFBLElBQUEsR0FBQSxHQUFNLElBQU4sQ0FBQTtBQUFBLElBQ0EsTUFBQSxHQUFTLElBRFQsQ0FBQTtBQUFBLElBRUEsTUFBQSxHQUFTLElBRlQsQ0FBQTtBQUFBLElBR0EsSUFBQSxHQUFPLElBSFAsQ0FBQTtBQUFBLElBSUEsSUFBQSxHQUFPLElBSlAsQ0FBQTtBQUFBLElBTUEsVUFBQSxDQUFXLFNBQUEsR0FBQTtBQUNULE1BQUEsTUFBQSxHQUNFO0FBQUEsUUFBQSxLQUFBLEVBQU8sNkRBQVA7QUFBQSxRQUNBLFFBQUEsRUFBVSxtQkFEVjtPQURGLENBQUE7QUFBQSxNQUdBLE1BQUEsR0FDRTtBQUFBLFFBQUEsWUFBQSxFQUFjLE9BQU8sQ0FBQyxTQUFSLENBQWtCLGNBQWxCLENBQWlDLENBQUMsV0FBbEMsQ0FBOEMsU0FBQyxDQUFELEdBQUE7aUJBQU8sRUFBUDtRQUFBLENBQTlDLENBQWQ7T0FKRixDQUFBO0FBQUEsTUFLQSxRQUFRLENBQUMsUUFBVCxDQUFBLENBTEEsQ0FBQTtBQUFBLE1BTUEsR0FBQSxHQUFVLElBQUEsUUFBUSxDQUFDLFFBQVQsQ0FBa0IsTUFBbEIsRUFBMEIsSUFBMUIsRUFBZ0MsTUFBaEMsQ0FOVixDQUFBO0FBQUEsTUFPQSxJQUFBLEdBQU8sRUFQUCxDQUFBO2FBUUEsSUFBQSxHQUFPLEdBVEU7SUFBQSxDQUFY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
+
+//# sourceURL=/home/niv/.atom/packages/build-tools/spec/stream-modifier-regex-spec.coffee

@@ -1,0 +1,40 @@
+providers: [
+  {
+    key: "bt"
+    config:
+      commands: [
+        {
+          project: "/opt/work/build-tools/spec/fixtures"
+          name: "Test"
+          command: "pwd"
+          wd: "."
+          env: {}
+          modifier:
+            save_all: {}
+            shell:
+              command: "bash -c"
+          stdout:
+            highlighting: "nh"
+          stderr:
+            highlighting: "nh"
+          output:
+            console:
+              close_success: false
+              debug: true
+          version: 1
+        }
+      ]
+  }
+  {
+    key: "bte"
+    config:
+      file: "root1/sub0/.build-tools.cson"
+      overwrite: false
+  }
+  {
+    key: "bte"
+    config:
+      file: "root1/sub0/.build-tools.cson"
+      overwrite: true
+  }
+]

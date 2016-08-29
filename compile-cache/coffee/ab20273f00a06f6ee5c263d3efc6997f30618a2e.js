@@ -1,0 +1,62 @@
+(function() {
+  var Command;
+
+  Command = require('../lib/provider/command');
+
+  describe('Command', function() {
+    var command, _command;
+    _command = null;
+    command = null;
+    beforeEach(function() {
+      _command = {
+        project: '/home/fabian/.atom/packages/build-tools/spec/fixtures',
+        name: 'Test',
+        command: 'echo "Hello " World',
+        wd: '.',
+        modifier: {
+          save_all: {},
+          shell: {},
+          wildcards: {}
+        },
+        stdout: {
+          highlighting: 'nh'
+        },
+        stderr: {
+          highlighting: 'nh'
+        },
+        output: {
+          console: {
+            close_success: false
+          }
+        },
+        version: 1
+      };
+      return command = new Command(_command);
+    });
+    it('has all objects', function() {
+      return expect(command.env).toBeDefined();
+    });
+    describe('on ::getSpawnInfo', function() {
+      return it('correctly splits the command', function() {
+        command.getSpawnInfo();
+        expect(command.command).toBe('echo');
+        return expect(command.args).toEqual(['Hello ', 'World']);
+      });
+    });
+    return it('automatically migrates to v2', function() {
+      expect(command.stdout.pipeline).toEqual([]);
+      expect(command.stderr.pipeline).toEqual([]);
+      return expect(command.environment).toEqual({
+        name: 'child_process',
+        config: {
+          stdoe: 'both'
+        }
+      });
+    });
+  });
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAiZmlsZSI6ICIiLAogICJzb3VyY2VSb290IjogIiIsCiAgInNvdXJjZXMiOiBbCiAgICAiL2hvbWUvbml2Ly5hdG9tL3BhY2thZ2VzL2J1aWxkLXRvb2xzL3NwZWMvY29tbWFuZC1zcGVjLmNvZmZlZSIKICBdLAogICJuYW1lcyI6IFtdLAogICJtYXBwaW5ncyI6ICJBQUFBO0FBQUEsTUFBQSxPQUFBOztBQUFBLEVBQUEsT0FBQSxHQUFVLE9BQUEsQ0FBUSx5QkFBUixDQUFWLENBQUE7O0FBQUEsRUFFQSxRQUFBLENBQVMsU0FBVCxFQUFvQixTQUFBLEdBQUE7QUFDbEIsUUFBQSxpQkFBQTtBQUFBLElBQUEsUUFBQSxHQUFXLElBQVgsQ0FBQTtBQUFBLElBQ0EsT0FBQSxHQUFVLElBRFYsQ0FBQTtBQUFBLElBR0EsVUFBQSxDQUFXLFNBQUEsR0FBQTtBQUNULE1BQUEsUUFBQSxHQUFXO0FBQUEsUUFDVCxPQUFBLEVBQVMsdURBREE7QUFBQSxRQUVULElBQUEsRUFBTSxNQUZHO0FBQUEsUUFHVCxPQUFBLEVBQVMscUJBSEE7QUFBQSxRQUlULEVBQUEsRUFBSSxHQUpLO0FBQUEsUUFLVCxRQUFBLEVBQ0U7QUFBQSxVQUFBLFFBQUEsRUFBVSxFQUFWO0FBQUEsVUFDQSxLQUFBLEVBQU8sRUFEUDtBQUFBLFVBRUEsU0FBQSxFQUFXLEVBRlg7U0FOTztBQUFBLFFBU1QsTUFBQSxFQUNFO0FBQUEsVUFBQSxZQUFBLEVBQWMsSUFBZDtTQVZPO0FBQUEsUUFXVCxNQUFBLEVBQ0U7QUFBQSxVQUFBLFlBQUEsRUFBYyxJQUFkO1NBWk87QUFBQSxRQWFULE1BQUEsRUFDRTtBQUFBLFVBQUEsT0FBQSxFQUNFO0FBQUEsWUFBQSxhQUFBLEVBQWUsS0FBZjtXQURGO1NBZE87QUFBQSxRQWdCVCxPQUFBLEVBQVMsQ0FoQkE7T0FBWCxDQUFBO2FBa0JBLE9BQUEsR0FBYyxJQUFBLE9BQUEsQ0FBUSxRQUFSLEVBbkJMO0lBQUEsQ0FBWCxDQUhBLENBQUE7QUFBQSxJQXdCQSxFQUFBLENBQUcsaUJBQUgsRUFBc0IsU0FBQSxHQUFBO2FBQ3BCLE1BQUEsQ0FBTyxPQUFPLENBQUMsR0FBZixDQUFtQixDQUFDLFdBQXBCLENBQUEsRUFEb0I7SUFBQSxDQUF0QixDQXhCQSxDQUFBO0FBQUEsSUEyQkEsUUFBQSxDQUFTLG1CQUFULEVBQThCLFNBQUEsR0FBQTthQUM1QixFQUFBLENBQUcsOEJBQUgsRUFBbUMsU0FBQSxHQUFBO0FBQ2pDLFFBQUEsT0FBTyxDQUFDLFlBQVIsQ0FBQSxDQUFBLENBQUE7QUFBQSxRQUNBLE1BQUEsQ0FBTyxPQUFPLENBQUMsT0FBZixDQUF1QixDQUFDLElBQXhCLENBQTZCLE1BQTdCLENBREEsQ0FBQTtlQUVBLE1BQUEsQ0FBTyxPQUFPLENBQUMsSUFBZixDQUFvQixDQUFDLE9BQXJCLENBQTZCLENBQUMsUUFBRCxFQUFXLE9BQVgsQ0FBN0IsRUFIaUM7TUFBQSxDQUFuQyxFQUQ0QjtJQUFBLENBQTlCLENBM0JBLENBQUE7V0FpQ0EsRUFBQSxDQUFHLDhCQUFILEVBQW1DLFNBQUEsR0FBQTtBQUNqQyxNQUFBLE1BQUEsQ0FBTyxPQUFPLENBQUMsTUFBTSxDQUFDLFFBQXRCLENBQStCLENBQUMsT0FBaEMsQ0FBd0MsRUFBeEMsQ0FBQSxDQUFBO0FBQUEsTUFDQSxNQUFBLENBQU8sT0FBTyxDQUFDLE1BQU0sQ0FBQyxRQUF0QixDQUErQixDQUFDLE9BQWhDLENBQXdDLEVBQXhDLENBREEsQ0FBQTthQUVBLE1BQUEsQ0FBTyxPQUFPLENBQUMsV0FBZixDQUEyQixDQUFDLE9BQTVCLENBQW9DO0FBQUEsUUFBQSxJQUFBLEVBQU0sZUFBTjtBQUFBLFFBQXVCLE1BQUEsRUFBUTtBQUFBLFVBQUEsS0FBQSxFQUFPLE1BQVA7U0FBL0I7T0FBcEMsRUFIaUM7SUFBQSxDQUFuQyxFQWxDa0I7RUFBQSxDQUFwQixDQUZBLENBQUE7QUFBQSIKfQ==
+
+//# sourceURL=/home/niv/.atom/packages/build-tools/spec/command-spec.coffee

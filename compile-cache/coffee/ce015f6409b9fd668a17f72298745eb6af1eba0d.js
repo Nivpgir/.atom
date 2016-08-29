@@ -1,0 +1,52 @@
+(function() {
+  var Module, ll;
+
+  Module = require('../lib/output/linter');
+
+  ll = require('../lib/linter-list');
+
+  describe('Output Module - Linter', function() {
+    var module;
+    module = null;
+    beforeEach(function() {
+      module = new Module.output;
+      ll.messages.push(1);
+      return module.newQueue({
+        queue: [1, 2, 3]
+      });
+    });
+    it('initializes the linter array', function() {
+      return expect(ll.messages.length).toBe(0);
+    });
+    describe('On stdout linter message', function() {
+      beforeEach(function() {
+        return module.stdout_linter('Test message');
+      });
+      return it('adds the message', function() {
+        return expect(ll.messages[0]).toBe('Test message');
+      });
+    });
+    describe('On stderr linter message', function() {
+      beforeEach(function() {
+        return module.stderr_linter('Test message');
+      });
+      return it('adds the message', function() {
+        return expect(ll.messages[0]).toBe('Test message');
+      });
+    });
+    return describe('On exitQueue', function() {
+      beforeEach(function() {
+        spyOn(atom.commands, 'dispatch');
+        return module.exitQueue(0);
+      });
+      return it('calls the linter package to reload', function() {
+        return expect(atom.commands.dispatch.mostRecentCall.args[1]).toBe('linter:lint');
+      });
+    });
+  });
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAiZmlsZSI6ICIiLAogICJzb3VyY2VSb290IjogIiIsCiAgInNvdXJjZXMiOiBbCiAgICAiL2hvbWUvbml2Ly5hdG9tL3BhY2thZ2VzL2J1aWxkLXRvb2xzL3NwZWMvb3V0cHV0LWxpbnRlci1zcGVjLmNvZmZlZSIKICBdLAogICJuYW1lcyI6IFtdLAogICJtYXBwaW5ncyI6ICJBQUFBO0FBQUEsTUFBQSxVQUFBOztBQUFBLEVBQUEsTUFBQSxHQUFTLE9BQUEsQ0FBUSxzQkFBUixDQUFULENBQUE7O0FBQUEsRUFDQSxFQUFBLEdBQUssT0FBQSxDQUFRLG9CQUFSLENBREwsQ0FBQTs7QUFBQSxFQUdBLFFBQUEsQ0FBUyx3QkFBVCxFQUFtQyxTQUFBLEdBQUE7QUFDakMsUUFBQSxNQUFBO0FBQUEsSUFBQSxNQUFBLEdBQVMsSUFBVCxDQUFBO0FBQUEsSUFFQSxVQUFBLENBQVcsU0FBQSxHQUFBO0FBQ1QsTUFBQSxNQUFBLEdBQVMsR0FBQSxDQUFBLE1BQVUsQ0FBQyxNQUFwQixDQUFBO0FBQUEsTUFDQSxFQUFFLENBQUMsUUFBUSxDQUFDLElBQVosQ0FBaUIsQ0FBakIsQ0FEQSxDQUFBO2FBRUEsTUFBTSxDQUFDLFFBQVAsQ0FBZ0I7QUFBQSxRQUFBLEtBQUEsRUFBTyxDQUFDLENBQUQsRUFBSSxDQUFKLEVBQU8sQ0FBUCxDQUFQO09BQWhCLEVBSFM7SUFBQSxDQUFYLENBRkEsQ0FBQTtBQUFBLElBT0EsRUFBQSxDQUFHLDhCQUFILEVBQW1DLFNBQUEsR0FBQTthQUNqQyxNQUFBLENBQU8sRUFBRSxDQUFDLFFBQVEsQ0FBQyxNQUFuQixDQUEwQixDQUFDLElBQTNCLENBQWdDLENBQWhDLEVBRGlDO0lBQUEsQ0FBbkMsQ0FQQSxDQUFBO0FBQUEsSUFVQSxRQUFBLENBQVMsMEJBQVQsRUFBcUMsU0FBQSxHQUFBO0FBRW5DLE1BQUEsVUFBQSxDQUFXLFNBQUEsR0FBQTtlQUNULE1BQU0sQ0FBQyxhQUFQLENBQXFCLGNBQXJCLEVBRFM7TUFBQSxDQUFYLENBQUEsQ0FBQTthQUdBLEVBQUEsQ0FBRyxrQkFBSCxFQUF1QixTQUFBLEdBQUE7ZUFDckIsTUFBQSxDQUFPLEVBQUUsQ0FBQyxRQUFTLENBQUEsQ0FBQSxDQUFuQixDQUFzQixDQUFDLElBQXZCLENBQTRCLGNBQTVCLEVBRHFCO01BQUEsQ0FBdkIsRUFMbUM7SUFBQSxDQUFyQyxDQVZBLENBQUE7QUFBQSxJQWtCQSxRQUFBLENBQVMsMEJBQVQsRUFBcUMsU0FBQSxHQUFBO0FBRW5DLE1BQUEsVUFBQSxDQUFXLFNBQUEsR0FBQTtlQUNULE1BQU0sQ0FBQyxhQUFQLENBQXFCLGNBQXJCLEVBRFM7TUFBQSxDQUFYLENBQUEsQ0FBQTthQUdBLEVBQUEsQ0FBRyxrQkFBSCxFQUF1QixTQUFBLEdBQUE7ZUFDckIsTUFBQSxDQUFPLEVBQUUsQ0FBQyxRQUFTLENBQUEsQ0FBQSxDQUFuQixDQUFzQixDQUFDLElBQXZCLENBQTRCLGNBQTVCLEVBRHFCO01BQUEsQ0FBdkIsRUFMbUM7SUFBQSxDQUFyQyxDQWxCQSxDQUFBO1dBMEJBLFFBQUEsQ0FBUyxjQUFULEVBQXlCLFNBQUEsR0FBQTtBQUV2QixNQUFBLFVBQUEsQ0FBVyxTQUFBLEdBQUE7QUFDVCxRQUFBLEtBQUEsQ0FBTSxJQUFJLENBQUMsUUFBWCxFQUFxQixVQUFyQixDQUFBLENBQUE7ZUFDQSxNQUFNLENBQUMsU0FBUCxDQUFpQixDQUFqQixFQUZTO01BQUEsQ0FBWCxDQUFBLENBQUE7YUFJQSxFQUFBLENBQUcsb0NBQUgsRUFBeUMsU0FBQSxHQUFBO2VBQ3ZDLE1BQUEsQ0FBTyxJQUFJLENBQUMsUUFBUSxDQUFDLFFBQVEsQ0FBQyxjQUFjLENBQUMsSUFBSyxDQUFBLENBQUEsQ0FBbEQsQ0FBcUQsQ0FBQyxJQUF0RCxDQUEyRCxhQUEzRCxFQUR1QztNQUFBLENBQXpDLEVBTnVCO0lBQUEsQ0FBekIsRUEzQmlDO0VBQUEsQ0FBbkMsQ0FIQSxDQUFBO0FBQUEiCn0=
+
+//# sourceURL=/home/niv/.atom/packages/build-tools/spec/output-linter-spec.coffee
