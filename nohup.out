@@ -1,25 +1,2 @@
-App load time: 1705ms
+App load time: 539ms
 Gtk-Message: GtkDialog mapped without a transient parent. This is discouraged.
-[11502:11502:0830/001110:ERROR:gl_context_glx.cc(55)] Failed to create GL context with glXCreateContextAttribsARB.
-[11502:11502:0830/001110:ERROR:gpu_info_collector.cc(46)] gl::init::CreateGLContext failed
-[11502:11502:0830/001110:ERROR:gpu_info_collector.cc(114)] Could not create context for info collection.
-[11502:11502:0830/001110:ERROR:gpu_main.cc(502)] gpu::CollectGraphicsInfo failed (fatal).
-[11502:11502:0830/001110:ERROR:gpu_child_thread.cc(369)] Exiting GPU process due to errors during initialization
-[11688:11688:0830/001111:ERROR:gl_context_glx.cc(55)] Failed to create GL context with glXCreateContextAttribsARB.
-[11688:11688:0830/001111:ERROR:gpu_info_collector.cc(46)] gl::init::CreateGLContext failed
-[11688:11688:0830/001111:ERROR:gpu_info_collector.cc(114)] Could not create context for info collection.
-[11688:11688:0830/001111:ERROR:gpu_main.cc(502)] gpu::CollectGraphicsInfo failed (fatal).
-[11688:11688:0830/001111:ERROR:gpu_child_thread.cc(369)] Exiting GPU process due to errors during initialization
-Created new window in existing browser session.
-Created new window in existing browser session.
-Created new window in existing browser session.
-[11878:11878:0830/001119:ERROR:gl_context_glx.cc(55)] Failed to create GL context with glXCreateContextAttribsARB.
-[11878:11878:0830/001119:ERROR:gpu_info_collector.cc(46)] gl::init::CreateGLContext failed
-[11878:11878:0830/001119:ERROR:gpu_info_collector.cc(114)] Could not create context for info collection.
-[11878:11878:0830/001119:ERROR:gpu_main.cc(502)] gpu::CollectGraphicsInfo failed (fatal).
-[11878:11878:0830/001119:ERROR:broker_posix.cc(41)] Invalid node channel message
-Created new window in existing browser session.
-Created new window in existing browser session.
-Gtk-Message: GtkDialog mapped without a transient parent. This is discouraged.
-Created new window in existing browser session.
-Created new window in existing browser session.

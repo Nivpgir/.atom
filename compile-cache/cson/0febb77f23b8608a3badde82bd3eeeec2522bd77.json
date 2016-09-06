@@ -1,0 +1,1 @@
+{"providers":[{"key":"bt","config":{"commands":[{"project":"/home/niv/Gits/nand2tetris","source":"/home/niv/Gits/nand2tetris/.build-tools.cson","name":"ane","command":"gcc -c main.c -o main","wd":".","env":{},"modifier":{},"environment":{"name":"child_process","config":{"stdoe":"both"}},"stdout":{"pipeline":[]},"stderr":{"pipeline":[]},"output":{},"version":2}]}}]}

@@ -1,0 +1,1 @@
+{"providers":[{"key":"bt","config":{"commands":[{"project":"/home/niv/Gits/os/ex3","source":"/home/niv/Gits/os/ex3/.build-tools.cson","name":"make","command":"make","wd":".","env":{},"modifier":{"save_all":{}},"environment":{"name":"child_process","config":{"stdoe":"both"}},"stdout":{"pipeline":[]},"stderr":{"pipeline":[]},"output":{},"version":2}]}}]}
