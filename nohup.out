@@ -1,2 +1,3 @@
-App load time: 539ms
+App load time: 1577ms
+Gtk-Message: GtkDialog mapped without a transient parent. This is discouraged.
 Gtk-Message: GtkDialog mapped without a transient parent. This is discouraged.

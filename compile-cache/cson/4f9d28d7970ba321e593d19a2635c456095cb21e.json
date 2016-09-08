@@ -1,0 +1,1 @@
+{"atom-workspace atom-text-editor":{"ctrl-k ctrl-l":"unset!"},"atom-workspace atom-text-editor:not([mini])":"ctrl-k ctrl-j","body":{"ctrl-k l":"window:focus-pane-on-right","ctrl-k j":"window:focus-pane-on-left","ctrl-k i":"window:focus-pane-on-up","ctrl-k k":"window:focus-pane-on-down"}}
