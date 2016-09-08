@@ -24,5 +24,4 @@ for record in [
       console.log(atom.views.getView(newPane)?.dispatchEvent new CustomEvent('application:new-file'))
       # console.log(atom.commands.dispatch(atom.workspace.getActivePaneItem(), 'editor:indent'))
 
-
 # TODO:

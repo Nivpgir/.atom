@@ -1,6 +1,12 @@
+'.platform-win32 atom-text-editor .platform-linux atom-text-editor': #atom-text-editor
+  'ctrl-e': 'unset!'
+
 'atom-workspace atom-text-editor':
   'ctrl-k ctrl-l': 'unset!'
 
+'atom-text-editor':
+  'ctrl-e': 'editor:move-to-end-of-line'
+  'ctrl-a': 'editor:move-to-end-of-line'
 
 'body':
 # splitting panes
@@ -25,7 +31,7 @@
 ".platform-win32 .platform-win32 .command-palette atom-text-editor":
   "alt-x": "command-palette:toggle"
 
-".platform-linux .platform-linux .command-palette atom-text-editor":
+".platform-linux .platform-linux .c ommand-palette atom-text-editor":
   "alt-x": "command-palette:toggle"
 
 
@@ -33,4 +39,4 @@
   # - jump paragraphs with ctrl-{direction}
   # - ctrl-a and ctrl-e to start and end of line
   # - ctrl-n and ctrl-p for next and previous AC
-  # -
+  # - alt-x opens command-palette
