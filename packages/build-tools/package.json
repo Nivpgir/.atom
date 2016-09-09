@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/tmp/d-116730-12451-19oiv27.jtkpgb9/package.tgz",
+        "raw": "/tmp/d-11688-5522-mesrpt.rapl9885mi/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/tmp/d-116730-12451-19oiv27.jtkpgb9/package.tgz",
-        "spec": "/tmp/d-116730-12451-19oiv27.jtkpgb9/package.tgz",
+        "rawSpec": "/tmp/d-11688-5522-mesrpt.rapl9885mi/package.tgz",
+        "spec": "/tmp/d-11688-5522-mesrpt.rapl9885mi/package.tgz",
         "type": "local"
       },
-      "/tmp/apm-install-dir-116730-12451-hyzb5y.rxzgvkuik9"
+      "/tmp/apm-install-dir-11688-5522-2a4kwy.m5fr8jjor"
     ]
   ],
-  "_from": "../d-116730-12451-19oiv27.jtkpgb9/package.tgz",
-  "_id": "build-tools@4.5.2",
+  "_from": "../d-11688-5522-mesrpt.rapl9885mi/package.tgz",
+  "_id": "build-tools@4.5.3",
   "_inCache": true,
   "_installable": true,
   "_location": "/build-tools",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/tmp/d-116730-12451-19oiv27.jtkpgb9/package.tgz",
+    "raw": "/tmp/d-11688-5522-mesrpt.rapl9885mi/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/tmp/d-116730-12451-19oiv27.jtkpgb9/package.tgz",
-    "spec": "/tmp/d-116730-12451-19oiv27.jtkpgb9/package.tgz",
+    "rawSpec": "/tmp/d-11688-5522-mesrpt.rapl9885mi/package.tgz",
+    "spec": "/tmp/d-11688-5522-mesrpt.rapl9885mi/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-116730-12451-19oiv27.jtkpgb9/package.tgz",
-  "_shasum": "d2a411b19400e4881e85b9436c4cfb91d8cfa489",
+  "_resolved": "file:../d-11688-5522-mesrpt.rapl9885mi/package.tgz",
+  "_shasum": "d5ec4ea0290a2d9ca96c8dea4cc1442206c7cb15",
   "_shrinkwrap": null,
-  "_spec": "/tmp/d-116730-12451-19oiv27.jtkpgb9/package.tgz",
-  "_where": "/tmp/apm-install-dir-116730-12451-hyzb5y.rxzgvkuik9",
+  "_spec": "/tmp/d-11688-5522-mesrpt.rapl9885mi/package.tgz",
+  "_where": "/tmp/apm-install-dir-11688-5522-2a4kwy.m5fr8jjor",
   "bugs": {
     "url": "https://github.com/deprint/build-tools-cpp/issues"
   },
@@ -83,7 +83,7 @@
   "description": "Build your projects in atom",
   "devDependencies": {},
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": ">=1.10.0 <2.0.0"
   },
   "homepage": "https://github.com/deprint/build-tools-cpp#readme",
   "keywords": [
@@ -118,7 +118,7 @@
     "type": "git",
     "url": "git+https://github.com/deprint/build-tools-cpp.git"
   },
-  "version": "4.5.2",
+  "version": "4.5.3",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [

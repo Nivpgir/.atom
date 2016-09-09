@@ -4,11 +4,13 @@
 'atom-workspace atom-text-editor':
   'ctrl-k ctrl-l': 'unset!'
 
-'atom-text-editor':
-  'ctrl-e': 'editor:move-to-end-of-line'
-  'ctrl-a': 'editor:move-to-end-of-line'
+"atom-workspace atom-text-editor:not([mini])":
+  "ctrl-up": "unset!"
+  "ctrl-down": "unset!"
+
 
 'body':
+
 # splitting panes
   'ctrl-k ctrl-l': 'custom:split-right'
   'ctrl-k ctrl-j': 'custom:split-left'
