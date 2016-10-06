@@ -1,3 +1,18 @@
+## 3.10.1
+
+* Fix `tsc` run
+
+## 3.10.0
+
+* Support for `BuckleScript`
+* Support for `F*`
+* Support for `Hy`
+* Support for `MIPS`
+* Support for `Oz`
+* Ignore first line check in scripts on Windows
+* Fix the `{FILE_ACTIVE_NAME_BASE}}` doesn't work
+* Fix run `tsc` on non amd or system module types
+
 ## 3.9.0
 
 * Support "Selection Based" run for `C#`

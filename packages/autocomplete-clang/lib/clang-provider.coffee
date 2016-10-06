@@ -66,10 +66,16 @@ class ClangProvider
     infoTagsRe = /\[#(.*?)#\]/g
     completion = completion.replace infoTagsRe, ''
     argumentsRe = /<#(.*?)#>/g
+    optionalArgumentsStart = completion.indexOf '{#'
+    completion = completion.replace /\{#/g, ''
+    completion = completion.replace /#\}/g, ''
     index = 0
-    completion = completion.replace argumentsRe, (match, arg) ->
+    completion = completion.replace argumentsRe, (match, arg, offset) ->
       index++
-      "${#{index}:#{arg}}"
+      if optionalArgumentsStart > 0 and offset > optionalArgumentsStart
+        return "${#{index}:optional #{arg}}"
+      else
+        return "${#{index}:#{arg}}"
 
     suggestion = {}
     suggestion.leftLabel = returnType if returnType?
@@ -116,6 +122,8 @@ class ClangProvider
       args.push "-Xclang", "-code-completion-brief-comments"
       if atom.config.get "autocomplete-clang.includeNonDoxygenCommentsAsDocumentation"
         args.push "-fparse-all-comments"
+      if atom.config.get "autocomplete-clang.includeSystemHeadersDocumentation"
+        args.push "-fretain-comments-from-system-headers"
 
     try
       clangflags = ClangFlags.getClangFlags(editor.getPath())

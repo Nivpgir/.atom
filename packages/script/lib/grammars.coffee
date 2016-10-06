@@ -24,6 +24,17 @@ module.exports =
       command: 'osascript'
       args: (context) -> [context.filepath]
 
+  AutoHotKey:
+    "File Based":
+      command: "AutoHotKey"
+      args: (context) -> [context.filepath]
+    "Selection Based":
+      command: "AutoHotKey"
+      args: (context) ->
+        code = context.getCode(true)
+        tmpFile = GrammarUtils.createTempFileWithCode(code)
+        [tmpFile]
+
   'Babel ES6 JavaScript':
     "Selection Based":
       command: "babel-node"
@@ -44,6 +55,17 @@ module.exports =
     "Line Number Based":
       command: "behat"
       args: (context) -> [context.fileColonLine()]
+
+  BuckleScript:
+    "Selection Based":
+      command: "bsc"
+      args: (context) ->
+        code = context.getCode()
+        tmpFile = GrammarUtils.createTempFileWithCode(code)
+        ['-c', tmpFile]
+    "File Based":
+      command: "bsc"
+      args: (context) -> ['-c', context.filepath]
 
   C:
     "File Based":
@@ -215,6 +237,11 @@ module.exports =
       command: if GrammarUtils.OperatingSystem.isWindows() then "fsi" else "fsharpi"
       args: (context) -> ['--exec', context.filepath]
 
+  'F*':
+    "File Based":
+      command: "fstar"
+      args: (context) -> ['--fsi', context.filepath]
+
   Forth:
     "File Based":
       command: "gforth"
@@ -277,6 +304,17 @@ module.exports =
     "Selection Based":
       command: "ghc"
       args: (context)  -> ['-e', context.getCode()]
+
+  Hy:
+    "File Based":
+      command: "hy"
+      args: (context) -> [context.filepath]
+    "Selection Based":
+      command: "hy"
+      args: (context) ->
+        code = context.getCode(true)
+        tmpFile = GrammarUtils.createTempFileWithCode(code, ".hy")
+        [tmpFile]
 
   IcedCoffeeScript:
     "Selection Based":
@@ -444,6 +482,11 @@ module.exports =
       command: "matlab"
       args: (context) -> ['-nodesktop','-nosplash','-r',"try run('" + context.filepath + "');while ~isempty(get(0,'Children')); pause(0.5); end; catch ME; disp(ME.message); exit(1); end; exit(0);"]
 
+  'MIPS Assembler':
+    "File Based":
+      command: "spim"
+      args: (context) -> [context.filepath]
+
   MoonScript:
     "Selection Based":
       command: "moon"
@@ -525,6 +568,17 @@ module.exports =
     "File Based":
       command: "octave"
       args: (context) -> ['-p', context.filepath.replace(/[^\/]*$/, ''), context.filepath]
+
+  Oz:
+    "Selection Based":
+      command: "ozc"
+      args: (context) ->
+        code = context.getCode()
+        tmpFile = GrammarUtils.createTempFileWithCode(code)
+        ['-c', tmpFile]
+    "File Based":
+      command: "ozc"
+      args: (context) -> ['-c', context.filepath]
 
   'Pandoc Markdown':
     "File Based":
@@ -629,6 +683,18 @@ module.exports =
     "File Based":
       command: "RantConsole.exe"
       args: (context) -> ['-file', context.filepath]
+
+  Reason:
+    "File Based":
+      command: if GrammarUtils.OperatingSystem.isWindows() then "cmd" else "bash"
+      args: (context) ->
+        progname = context.filename.replace /\.re$/, ""
+        args = []
+        if GrammarUtils.OperatingSystem.isWindows()
+          args = ["/c rebuild #{progname}.native && #{progname}.native"]
+        else
+          args = ['-c', "rebuild '#{progname}.native' && '#{progname}.native'"]
+        return args
 
   RSpec:
     "Selection Based":
@@ -763,8 +829,8 @@ module.exports =
         code = context.getCode(true)
         tmpFile = GrammarUtils.createTempFileWithCode(code, ".ts")
         jsFile = tmpFile.replace /\.ts$/, ".js"
-        args = ['-c', "tsc --out '#{jsFile}' '#{tmpFile}' && node '#{jsFile}'"]
+        args = ['-c', "tsc --outFile '#{jsFile}' '#{tmpFile}' && node '#{jsFile}'"]
         return args
     "File Based":
       command: "bash"
-      args: (context) -> ['-c', "tsc '#{context.filepath}' --out /tmp/js.out && node /tmp/js.out"]
+      args: (context) -> ['-c', "tsc '#{context.filepath}' --outFile /tmp/js.out && node /tmp/js.out"]

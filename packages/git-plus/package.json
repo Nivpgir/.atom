@@ -2,91 +2,40 @@
   "_args": [
     [
       {
-        "raw": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11684-5648-4enexq\\package.tgz",
+        "raw": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11695-2808-wmu567\\package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11684-5648-4enexq\\package.tgz",
-        "spec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11684-5648-4enexq\\package.tgz",
+        "rawSpec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11695-2808-wmu567\\package.tgz",
+        "spec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11695-2808-wmu567\\package.tgz",
         "type": "local"
       },
-      "C:\\Users\\nivp\\AppData\\Local\\Temp\\apm-install-dir-11684-5648-1opmyjf"
+      "C:\\Users\\nivp\\AppData\\Local\\Temp\\apm-install-dir-11695-2808-1dip6do"
     ]
   ],
-  "_from": "..\\d-11684-5648-4enexq\\package.tgz",
-  "_id": "git-plus@5.16.2",
+  "_from": "..\\d-11695-2808-wmu567\\package.tgz",
+  "_id": "git-plus@5.18.0",
   "_inCache": true,
   "_installable": true,
   "_location": "/git-plus",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11684-5648-4enexq\\package.tgz",
+    "raw": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11695-2808-wmu567\\package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11684-5648-4enexq\\package.tgz",
-    "spec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11684-5648-4enexq\\package.tgz",
+    "rawSpec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11695-2808-wmu567\\package.tgz",
+    "spec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11695-2808-wmu567\\package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:..\\d-11684-5648-4enexq\\package.tgz",
-  "_shasum": "e479b016f06d3ad326dc6311800f678211655147",
+  "_resolved": "file:..\\d-11695-2808-wmu567\\package.tgz",
+  "_shasum": "d2616aa7bec56ff7590fef5ad469b567d723b3d6",
   "_shrinkwrap": null,
-  "_spec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11684-5648-4enexq\\package.tgz",
-  "_where": "C:\\Users\\nivp\\AppData\\Local\\Temp\\apm-install-dir-11684-5648-1opmyjf",
-  "activationCommands": {
-    "atom-workspace": [
-      "git-plus:menu",
-      "git-plus:add",
-      "git-plus:add-all",
-      "git-plus:add-all-and-commit",
-      "git-plus:add-all-commit-and-push",
-      "git-plus:add-and-commit",
-      "git-plus:add-and-commit-and-push",
-      "git-plus:delete-local-branch",
-      "git-plus:delete-remote-branch",
-      "git-plus:diff-all",
-      "git-plus:diff",
-      "git-plus:difftool",
-      "git-plus:log",
-      "git-plus:log-current-file",
-      "git-plus:status",
-      "git-plus:push",
-      "git-plus:pull",
-      "git-plus:pull-using-rebase",
-      "git-plus:remove",
-      "git-plus:remove-current-file",
-      "git-plus:checkout",
-      "git-plus:checkout-remote",
-      "git-plus:checkout-current-file",
-      "git-plus:checkout-all-files",
-      "git-plus:cherry-pick",
-      "git-plus:commit",
-      "git-plus:commit-all",
-      "git-plus:commit-amend",
-      "git-plus:fetch",
-      "git-plus:new-branch",
-      "git-plus:reset-head",
-      "git-plus:show",
-      "git-plus:stage-files",
-      "git-plus:stage-hunk",
-      "git-plus:stash-save",
-      "git-plus:stash-save-message",
-      "git-plus:stash-pop",
-      "git-plus:stash-keep",
-      "git-plus:stash-drop",
-      "git-plus:tags",
-      "git-plus:unstage-files",
-      "git-plus:init",
-      "git-plus:run",
-      "git-plus:merge",
-      "git-plus:merge-remote",
-      "git-plus:rebase",
-      "git-plus:open-changed-files"
-    ]
-  },
+  "_spec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11695-2808-wmu567\\package.tgz",
+  "_where": "C:\\Users\\nivp\\AppData\\Local\\Temp\\apm-install-dir-11695-2808-1dip6do",
   "bugs": {
     "url": "https://github.com/akonwi/git-plus/issues"
   },
@@ -103,7 +52,8 @@
     "flavored-path": "0.0.8",
     "fs-plus": "^2.2.0",
     "fuzzaldrin": "^1.2.0",
-    "underscore-plus": "1.x"
+    "underscore": "^1.8.3",
+    "underscore-plus": "^1.6.6"
   },
   "description": "Do git things without the terminal",
   "devDependencies": {},
@@ -124,5 +74,5 @@
     "type": "git",
     "url": "git+https://github.com/akonwi/git-plus.git"
   },
-  "version": "5.16.2"
+  "version": "5.18.0"
 }

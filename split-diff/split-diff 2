@@ -1,0 +1,796 @@
+# -*- coding: utf-8 -*-
+
+
+from __future__ import division  # so that 1/3=0.333 instead of 1/3=0
+from psychopy import visual, core, data, event, logging, sound, gui
+from psychopy.constants import *  # things like STARTED, FINISHED
+import numpy as np  # whole numpy lib is available, prepend 'np.'
+from numpy import sin, cos, tan, log, log10, pi, average, sqrt, std, deg2rad, rad2deg, linspace, asarray
+from numpy.random import random, randint, normal, shuffle
+import random
+import os  # handy system and path functions
+from psychopy.iohub import launchHubServer, EventConstants
+import copy
+
+
+# Ensure that relative paths start from the same directory as this script
+_thisDir = os.path.dirname(os.path.abspath(__file__))
+os.chdir(_thisDir)
+
+
+# Store info about the experiment session
+
+
+expName = 'exp1Section3'  # from the Builder filename that created this script
+expInfo = {'participant': '', 'session': '001'}
+dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
+if dlg.OK == False: core.quit()  # user pressed cancel
+expInfo['date'] = data.getDateStr()  # add a simple timestamp
+expInfo['expName'] = expName
+
+
+# Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
+filename = _thisDir + os.sep + 'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])
+
+# An ExperimentHandler isn't essential but helps with data saving
+thisExp = data.ExperimentHandler(name=expName, version='',
+                                 extraInfo=expInfo,
+                                 runtimeInfo=None,
+                                 savePickle=True,
+                                 saveWideText=True,
+                                 dataFileName=filename)
+
+# save a log file for detail verbose info
+logFile = logging.LogFile(filename + '.log', level=logging.EXP)
+logging.console.setLevel(logging.WARNING)  # this outputs to the screen, not a file
+
+
+
+
+# Setup the Window
+win = visual.Window(size=(1920, 1080), fullscr=True, screen=0, allowGUI=False, allowStencil=False,
+                    monitor='testMonitor', color=[0, 0, 0], colorSpace='rgb',
+                    blendMode='avg', useFBO=True, units='deg'
+                    )
+#set mouse to invisible
+win.mouseVisible = False
+# store frame rate of monitor if we can measure it successfully
+expInfo['frameRate'] = win.getActualFrameRate()
+if expInfo['frameRate'] != None:
+    frameDur = 1.0 / round(expInfo['frameRate'])
+else:
+    frameDur = 1.0 / 60.0  # couldn't get a reliable measure so guess
+
+# Initialize IOHUB for keyreleases
+io = launchHubServer()
+keyboard = io.devices.keyboard
+
+
+
+# Instantiacte visual objects
+instructionText = visual.TextStim(win=win,
+                                  ori=0,
+                                  name='text',
+                                  text='You are about to see different images, each of them will be presented for a different duration.'
+                                       ' \nOnce the image is gone, \
+                                        you are required to reproduce the same duration by pressing the spacebar.\nAs you press the spacebar, \
+                                        the same image will appear\n\n\
+                                        Ready? Press the ''spacebar''',
+                                  font='Arial',
+                                  pos=[0, 0],
+                                  height=2,
+                                  wrapWidth=30,
+                                  color='white',
+                                  colorSpace='rgb',
+                                  opacity=1,
+                                  depth=0.0)
+
+
+instructionBlock2Text = visual.TextStim(win=win,
+                                  ori=0,
+                                  name='instructionBlock2Text',
+                                  text='You are about to see different images, each of them will be presented for a different duration.'
+                                       ' \nOnce the image is gone, \
+                                        you are required to reproduce the same duration by pressing the spacebar.\nThis time as you press the spacebar, a new image will appear \n\n\
+                                        Ready? Press the ''spacebar''',
+                                  font='Arial',
+                                  pos=[0, 0],
+                                  height=2,
+                                  wrapWidth=30,
+                                  color='white',
+                                  colorSpace='rgb',
+                                  opacity=1,
+                                  depth=0.0)
+instructionBlock3Text = visual.TextStim(win=win,
+                                  ori=0,
+                                  name='instructionBlock3Text',
+                                  text='You are about to see different images, each of them will be presented for a different duration.'
+                                       ' \nOnce the image is gone, \
+                                        you are required to reproduce the same duration by pressing the spacebar.\nThis time as you press the spacebar, nothing will appear - \
+                                        you will press the spacebar for the desired duration, and the screen will remain gray \n\n\
+                                        Ready? Press the ''spacebar''',
+                                  font='Arial',
+                                  pos=[0, 0],
+                                  height=2,
+                                  wrapWidth=30,
+                                  color='white',
+                                  colorSpace='rgb',
+                                  opacity=1,
+                                  depth=0.0)
+instructionBlock4Text = visual.TextStim(win=win,
+                                  ori=0,
+                                  name='instructionBlock4Text',
+                                  text='Empty blue frames will be presented for different durations.'
+                                       ' \nOnce a frame is gone, \
+                                        you are required to reproduce the same duration by pressing the spacebar.\nAs you press the spacebar another empty blue frame will appear \n\n\
+                                        Ready? Press the ''spacebar''',
+                                  font='Arial',
+                                  pos=[0, 0],
+                                  height=2,
+                                  wrapWidth=30,
+                                  color='white',
+                                  colorSpace='rgb',
+                                  opacity=1,
+                                  depth=0.0)
+# Instantiacte visual objects
+instructionTextForBreaks = visual.TextStim(win=win,
+                                  ori=0,
+                                  name='text',
+                                  text= 'Please call the experimenter ',
+                                  font='Arial',
+                                  pos=[0, 0],
+                                  height=2,
+                                  wrapWidth=30,
+                                  color='white',
+                                  colorSpace='rgb',
+                                  opacity=1,
+                                  depth=0.0)
+
+
+fixation = visual.TextStim(win=win, ori=0, name='fixation',
+                           text='+', font='Arial',
+                           pos=[0, 0], height=2, wrapWidth=30,
+                           color='white', colorSpace='rgb', opacity=1,
+                           depth=-2.0)
+image1 = visual.ImageStim(win=win, name='image1',
+                          image='sin', mask=None,
+                          ori=0, pos=[0, 0], size=[736, 452],
+                          color=[1, 1, 1], colorSpace='rgb', opacity=1,
+                          flipHoriz=False, flipVert=False,
+                          texRes=128, interpolate=True, depth=-3.0, units='pix')
+image2 = visual.ImageStim(win=win, name='image2',
+                          image='sin', mask=None,
+                          ori=0, pos=[0, 0], size=[736, 452],
+                          color=[1, 1, 1], colorSpace='rgb', opacity=1.0,
+                          flipHoriz=False, flipVert=False,
+                          texRes=128, interpolate=True, depth=-4.0, units='pix')
+text_2 = visual.TextStim(win=win, ori=0, name='text_2',
+                         text='default text', font='Arial',
+                         pos=[15, 0], height=5, wrapWidth=30,
+                         color='white', colorSpace='rgb', opacity=1,
+                         depth=-2.0)
+
+greyRect = visual.Rect(win=win, name='greyrect',
+    width=[0.5, 0.5][0], height=[0.5, 0.5][1],
+    ori=0, pos=[0, 0],
+    lineWidth=0, lineColor=[1,1,1], lineColorSpace='rgb',
+    fillColor=[0,0,0], fillColorSpace='rgb',
+    opacity=1,depth=-1.0,
+    interpolate=True)
+
+question = 'How long was the experiment in seconds (In multiplications of 30 seconds) ?'
+sectionTime = {question:''}
+
+
+#Start a clock to time the experiment
+section3Clock = core.Clock()
+section3Clock.reset()
+
+##Open clocks - figure out for which part exactly..
+##general clocks intended for timing the keyboard press time and a general
+##trial timing clocks.
+CurrentTrialClock = core.Clock()
+KBClock = core.Clock()
+##however, we are using only frames in the end, so if we decide we don't
+##need those clocks they can be deleted
+
+FIXATION_TIME = 0.4
+FIXATION_TIME_FRAMES = msToFrame(FIXATION_TIME * 1000)
+INTER_FIX_INT = msToFrame(50)
+IMAGE1START = FIXATION_TIME_FRAMES + 2*INTER_FIX_INT
+
+
+
+############################################################################
+# First Block
+############################################################################
+
+# Set durations list in frames
+dur_ms = range(200, 3001)[::400]
+dur_frame = [msToFrame(dur) for dur in dur_ms]
+durations = dur_frame * 6
+trainingDurations = [ durations[randint(len(durations))] for i in range(5)]
+
+# Prepare images - get all images from folder
+IMAGES_DIR = "Images_Cropped/"
+images = [name for name in os.listdir(IMAGES_DIR) if os.path.isfile(IMAGES_DIR + name) and name.endswith('.jpg')]
+trainingImages = images[48:]
+
+shuffle(trainingImages)
+shuffle(durations)
+shuffle(images)
+
+trainingTrials = zip(trainingDurations, trainingImages)
+
+
+# Present instructions
+instructionText.setAutoDraw(True)
+win.flip()
+key = keyboard.waitForKeys(keys=[u' '])
+instructionText.setAutoDraw(False)
+win.flip()
+
+# create trials - trials is a list of tuples - e.g. [(dur(i),image(j),..] - gets only 48 from pictures
+trials = zip(durations, images[:len(durations)])
+
+
+
+#Training Trials
+for dur, image in trainingTrials:
+
+    image1End = FIXATION_TIME_FRAMES + 2*INTER_FIX_INT + dur
+    image1.setImage(IMAGES_DIR + image)
+    image2.setImage(IMAGES_DIR + image)
+    t = 0
+    frameN = 0
+    continueRoutine = True
+    spaceEvent = None
+    space_release = -1
+    space_press = -1
+    CurrentTrialClock.reset()
+    while continueRoutine:
+        # get keyboard presses
+        KBevents = keyboard.getEvents()
+        for event in KBevents:
+            if event.key == u'escape':
+                endExpNow()
+            if event.key == u' ':
+                # if we're in time for second image
+                if frameN >= FIXATION_TIME_FRAMES + dur + 2*INTER_FIX_INT:
+                    # if this is a space press, or
+                    # space has already been presesd and in such case wer'e expecting a space release
+                    if event.type == EventConstants.KEYBOARD_PRESS or space_press != -1:
+                        # save the event
+                        spaceEvent = event
+                        # otherwise, ignore it
+
+
+        # draw fixation
+        if frameN <= FIXATION_TIME_FRAMES + INTER_FIX_INT and frameN >= INTER_FIX_INT:
+            fixation.setAutoDraw(True)
+        else:
+            fixation.setAutoDraw(False)
+
+        # draw first image1
+        if frameN >= IMAGE1START and frameN <= image1End:
+            image1.setAutoDraw(True)
+        else:
+            image1.setAutoDraw(False)
+
+        if frameN >= image1End:
+            if spaceEvent != None:
+                if spaceEvent.type == EventConstants.KEYBOARD_PRESS:
+                    image2.setAutoDraw(True)
+                    space_press = frameN
+                    space_press_t = CurrentTrialClock.getTime()
+
+                if spaceEvent.type == EventConstants.KEYBOARD_RELEASE:
+                    image2.setAutoDraw(False)
+                    space_release = frameN
+                    space_release_t = CurrentTrialClock.getTime()
+                    continueRoutine = False
+                spaceEvent = None
+
+        if continueRoutine:
+            win.flip()
+        frameN += 1
+
+    thisExp.addData('Image1Duration', frameToMS(dur))
+    thisExp.addData('PressDuration', frameToMS(space_release - space_press))
+    thisExp.addData('PressDuration_T', space_release_t - space_press_t)
+    thisExp.addData('PressRT', frameToMS(space_press - image1End))
+    thisExp.addData('PressRT_T', space_press_t - frameToMS(image1End) / 1000)
+    thisExp.addData('Delta', frameToMS(dur) - 1000 * (space_release_t - space_press_t))
+    thisExp.nextEntry()
+
+
+# Body of the section, iterate for every tuple in trials
+for dur, image in trials:
+    image1End = FIXATION_TIME_FRAMES + 2*INTER_FIX_INT + dur
+    image1.setImage(IMAGES_DIR + image)
+    image2.setImage(IMAGES_DIR + image)
+    t = 0
+    frameN = 0
+    continueRoutine = True
+    spaceEvent = None
+    space_release = -1
+    space_press = -1
+    CurrentTrialClock.reset()
+    while continueRoutine:
+        # get keyboard presses
+        KBevents = keyboard.getEvents()
+        for event in KBevents:
+            if event.key == u'escape':
+                endExpNow()
+            if event.key == u' ':
+                # if we're in time for second image
+                if frameN >= FIXATION_TIME_FRAMES + dur + 2*INTER_FIX_INT:
+                    # if this is a space press, or
+                    # space has already been presesd and in such case wer'e expecting a space release
+                    if event.type == EventConstants.KEYBOARD_PRESS or space_press != -1:
+                        # save the event
+                        spaceEvent = event
+                        # otherwise, ignore it
+
+
+        # draw fixation
+        if frameN <= FIXATION_TIME_FRAMES + INTER_FIX_INT and frameN >= INTER_FIX_INT:
+            fixation.setAutoDraw(True)
+        else:
+            fixation.setAutoDraw(False)
+
+        # draw first image1
+        if frameN >= IMAGE1START and frameN <= image1End:
+            image1.setAutoDraw(True)
+        else:
+            image1.setAutoDraw(False)
+
+        if frameN >= image1End:
+            if spaceEvent != None:
+                if spaceEvent.type == EventConstants.KEYBOARD_PRESS:
+                    image2.setAutoDraw(True)
+                    space_press = frameN
+                    space_press_t = CurrentTrialClock.getTime()
+
+                if spaceEvent.type == EventConstants.KEYBOARD_RELEASE:
+                    image2.setAutoDraw(False)
+                    space_release = frameN
+                    space_release_t = CurrentTrialClock.getTime()
+                    continueRoutine = False
+                spaceEvent = None
+
+        if continueRoutine:
+            win.flip()
+        frameN += 1
+
+    thisExp.addData('Image1Duration', frameToMS(dur))
+    thisExp.addData('PressDuration', frameToMS(space_release - space_press))
+    thisExp.addData('PressDuration_T', space_release_t - space_press_t)
+    thisExp.addData('PressRT', frameToMS(space_press - image1End))
+    thisExp.addData('PressRT_T', space_press_t - frameToMS(image1End) / 1000)
+    thisExp.addData('Delta', frameToMS(dur) - 1000 * (space_release_t - space_press_t))
+    thisExp.nextEntry()
+
+
+# Present instructions
+instructionText.setAutoDraw(True)
+win.flip()
+key = keyboard.waitForKeys(keys=[u' '])
+instructionText.setAutoDraw(False)
+win.flip()
+
+
+
+#Get subjective estimation from user about the duration of this block
+
+
+thisExp.addData('Block 1 Actual Length', section3Clock.getTime())
+section3Clock.reset()
+
+dlg = gui.DlgFromDict(dictionary=sectionTime, title='Last Question')
+thisExp.addData('Subject Time Estimation Block 1', sectionTime[question])
+thisExp.nextEntry()
+
+
+# Break
+instructionTextForBreaks.setAutoDraw(True)
+win.flip()
+key = keyboard.waitForKeys(keys=[u'm'])
+instructionTextForBreaks.setAutoDraw(False)
+win.flip()
+
+
+############################################################################
+# Second Block
+############################################################################
+
+# Instructions page
+instructionBlock2Text.setAutoDraw(True)
+win.flip()
+key = keyboard.waitForKeys(keys=[u' '])
+instructionBlock2Text.setAutoDraw(False)
+win.flip()
+
+
+# Reshuffle duration and images
+durations = dur_frame*6
+images = [name for name in os.listdir(IMAGES_DIR) if os.path.isfile(IMAGES_DIR + name) and name.endswith('.jpg')]
+shuffle(images)
+
+imagesA = images[:6]
+imlist = [[im]*8 for im in imagesA]
+imagesA = [im for imnest in imlist for im in imnest]
+
+imagesB = images[6:]
+shuffle(imagesB)
+trials = zip(durations, imagesA, imagesB)
+shuffle(trials)
+
+for dur, imageA, imageB in trials:
+    image1End = FIXATION_TIME_FRAMES + 2*INTER_FIX_INT + dur
+    image1.setImage(IMAGES_DIR + imageA)
+    image2.setImage(IMAGES_DIR + imageB)
+    t = 0
+    frameN = 0
+    continueRoutine = True
+    spaceEvent = None
+    space_release = -1
+    space_press = -1
+    CurrentTrialClock.reset()
+    while continueRoutine:
+        # get keyboard presses
+        KBevents = keyboard.getEvents()
+        for event in KBevents:
+            if event.key == u'escape':
+                endExpNow()
+            if event.key == u' ':
+                # if we're in time for second image, save the event
+                # otherwise, ignore it
+                if frameN >= FIXATION_TIME_FRAMES + dur:
+                    spaceEvent = event
+
+        # draw fixation
+        if frameN <= FIXATION_TIME_FRAMES + INTER_FIX_INT and frameN >= INTER_FIX_INT:
+            fixation.setAutoDraw(True)
+        else:
+            fixation.setAutoDraw(False)
+
+        # draw image1 first
+        if frameN >= IMAGE1START and frameN <= image1End:
+            image1.setAutoDraw(True)
+        else:
+            image1.setAutoDraw(False)
+
+        if frameN >= image1End:
+            if spaceEvent is not None:
+                if spaceEvent.type == EventConstants.KEYBOARD_RELEASE:
+                    image2.setAutoDraw(False)
+                    space_release = frameN
+                    space_release_t = CurrentTrialClock.getTime()
+                    continueRoutine = False
+                if spaceEvent.type == EventConstants.KEYBOARD_PRESS:
+                    image2.setAutoDraw(True)
+                    space_press = frameN
+                    space_press_t = CurrentTrialClock.getTime()
+                spaceEvent = None
+
+        if continueRoutine:
+            win.flip()
+        frameN += 1
+
+    thisExp.addData('ImageDuration', frameToMS(dur))
+    thisExp.addData('PressDuration', frameToMS(space_release - space_press))
+    thisExp.addData('PressDuration_T', space_release_t - space_press_t)
+    thisExp.addData('PressRT', frameToMS(space_press - image1End))
+    thisExp.addData('PressRT_T', space_press_t - frameToMS(image1End) / 1000)
+    thisExp.addData('Delta', frameToMS(dur) - 1000 * (space_release_t - space_press_t))
+    thisExp.nextEntry()
+
+
+#Get subjective estimation from user about the duration of this blo
+
+
+'''
+thisExp.addData('Block 2 Actual Length', section3Clock.getTime())
+section3Clock.reset()
+dlg = gui.DlgFromDict(dictionary=sectionTime, title='Last Question')
+thisExp.addData('Subject Time Estimation Block 2', sectionTime[question])
+thisExp.nextEntry()
+'''
+
+
+# Break
+instructionTextForBreaks.setAutoDraw(True)
+win.flip()
+key = keyboard.waitForKeys(keys=[u'm'])
+instructionTextForBreaks.setAutoDraw(False)
+win.flip()
+
+
+
+############################################################################
+# Third Block
+############################################################################
+
+
+# Instructions page
+instructionText.setAutoDraw(True)
+win.flip()
+key = keyboard.waitForKeys(keys=[u' '])
+instructionText.setAutoDraw(False)
+win.flip()
+
+# Reshuffle duration and images
+shuffle(durations)
+shuffle(images)
+
+for dur, image in trainingTrials:
+    image1End = FIXATION_TIME_FRAMES + 2*INTER_FIX_INT + dur
+    image1.setImage(IMAGES_DIR + image)
+    #image2.setImage(IMAGES_DIR + image)
+
+    t = 0
+    frameN = 0
+    continueRoutine = True
+    spaceEvent = None
+    space_release = -1
+    space_press = -1
+    CurrentTrialClock.reset()
+    while continueRoutine:
+        # get keyboard presses
+        KBevents = keyboard.getEvents()
+        for event in KBevents:
+            if event.key == u'escape':
+                endExpNow()
+            if event.key == u' ':
+                # if we're in time for second image, save the event
+                # otherwise, ignore it
+                if frameN >= FIXATION_TIME_FRAMES + dur:
+                    spaceEvent = event
+
+        # draw fixation
+        if frameN <= FIXATION_TIME_FRAMES + INTER_FIX_INT and frameN >= INTER_FIX_INT:
+            fixation.setAutoDraw(True)
+        else:
+            fixation.setAutoDraw(False)
+
+        # draw first image1
+        if frameN >= IMAGE1START and frameN <= image1End:
+            image1.setAutoDraw(True)
+        else:
+            image1.setAutoDraw(False)
+
+        if frameN >= image1End:
+            if spaceEvent != None:
+                if spaceEvent.type == EventConstants.KEYBOARD_RELEASE:
+                    #image2.setAutoDraw(False)
+                    space_release = frameN
+                    space_release_t = CurrentTrialClock.getTime()
+                    continueRoutine = False
+                if spaceEvent.type == EventConstants.KEYBOARD_PRESS:
+                    #image2.setAutoDraw(True)
+                    space_press = frameN
+                    space_press_t = CurrentTrialClock.getTime()
+                spaceEvent = None
+
+        if continueRoutine:
+            win.flip()
+        frameN += 1
+
+    thisExp.addData('ImageDuration', frameToMS(dur))
+    thisExp.addData('PressDuration', frameToMS(space_release - space_press))
+    thisExp.addData('PressDuration_T', space_release_t - space_press_t)
+    thisExp.addData('PressRT', frameToMS(space_press - image1End))
+    thisExp.addData('PressRT_T', space_press_t - frameToMS(image1End) / 1000)
+    thisExp.addData('Delta', frameToMS(dur) - 1000 * (space_release_t - space_press_t))
+    thisExp.nextEntry()
+
+
+trials = zip(durations, images[:len(durations)])
+
+
+# Instructions page
+instructionText.setAutoDraw(True)
+win.flip()
+key = keyboard.waitForKeys(keys=[u' '])
+instructionText.setAutoDraw(False)
+win.flip()
+
+
+for dur, image in trials:
+    image1End = FIXATION_TIME_FRAMES + 2*INTER_FIX_INT + dur
+    image1.setImage(IMAGES_DIR + image)
+    image2.setImage("greyPicCropped.jpg")
+    t = 0
+    frameN = 0
+    continueRoutine = True
+    spaceEvent = None
+    space_release = -1
+    space_press = -1
+    CurrentTrialClock.reset()
+    while continueRoutine:
+        # get keyboard presses
+        KBevents = keyboard.getEvents()
+        for event in KBevents:
+            if event.key == u'escape':
+                endExpNow()
+            if event.key == u' ':
+                # if we're in time for second image, save the event
+                # otherwise, ignore it
+                if frameN >= FIXATION_TIME_FRAMES + dur:
+                    spaceEvent = event
+
+        # draw fixation
+        if frameN <= FIXATION_TIME_FRAMES + INTER_FIX_INT and frameN >= INTER_FIX_INT:
+            fixation.setAutoDraw(True)
+        else:
+            fixation.setAutoDraw(False)
+
+        # draw first image1
+        if frameN >= IMAGE1START and frameN <= image1End:
+            image1.setAutoDraw(True)
+        else:
+            image1.setAutoDraw(False)
+
+        if frameN >= image1End:
+            if spaceEvent != None:
+                if spaceEvent.type == EventConstants.KEYBOARD_RELEASE:
+                    image2.setAutoDraw(False)
+                    space_release = frameN
+                    space_release_t = CurrentTrialClock.getTime()
+                    continueRoutine = False
+                if spaceEvent.type == EventConstants.KEYBOARD_PRESS:
+                    image2.setAutoDraw(True)
+                    space_press = frameN
+                    space_press_t = CurrentTrialClock.getTime()
+                spaceEvent = None
+
+        if continueRoutine:
+            win.flip()
+        frameN += 1
+
+    thisExp.addData('ImageDuration', frameToMS(dur))
+    thisExp.addData('PressDuration', frameToMS(space_release - space_press))
+    thisExp.addData('PressDuration_T', space_release_t - space_press_t)
+    thisExp.addData('PressRT', frameToMS(space_press - image1End))
+    thisExp.addData('PressRT_T', space_press_t - frameToMS(image1End) / 1000)
+    thisExp.addData('Delta', frameToMS(dur) - 1000 * (space_release_t - space_press_t))
+    thisExp.nextEntry()
+
+#Get subjective estimation from user about the duration of this block
+
+
+
+'''
+thisExp.addData('Block 3 Actual Length', section3Clock.getTime())
+section3Clock.reset()
+dlg = gui.DlgFromDict(dictionary=sectionTime, title='Last Question')
+thisExp.addData('Subject Time Estimation Block 3', sectionTime[question])
+thisExp.nextEntry()
+'''
+
+
+
+# Break
+instructionTextForBreaks.setAutoDraw(True)
+win.flip()
+key = keyboard.waitForKeys(keys=[u'm'])
+instructionText.setAutoDraw(False)
+win.flip()
+
+############################################################################
+# Fourth Block
+############################################################################
+
+# Instructions page
+instructionText.setAutoDraw(True)
+win.flip()
+key = keyboard.waitForKeys(keys=[u' '])
+instructionText.setAutoDraw(False)
+win.flip()
+
+# Reshuffle duration and images
+shuffle(durations)
+shuffle(images)
+
+trials = zip(durations, images[:len(durations)])
+
+
+###FOR DEBUG###
+trialsC = trials[:2]
+
+
+for dur, image in trialsC:
+    image1End = FIXATION_TIME_FRAMES + 2*INTER_FIX_INT + dur
+    randomNumForSecondImage = random.randrange(1, len(durations), 1)
+    image1.setImage("greyPicCroppedBlueFrame.jpg")
+    image2.setImage("greyPicCroppedBlueFrame.jpg")
+    t = 0
+    frameN = 0
+    continueRoutine = True
+    spaceEvent = None
+    space_release = -1
+    space_press = -1
+    CurrentTrialClock.reset()
+    while continueRoutine:
+        # get keyboard presses
+        KBevents = keyboard.getEvents()
+        for event in KBevents:
+            if event.key == u'escape':
+                endExpNow()
+            if event.key == u' ':
+                # if we're in time for second image, save the event
+                # otherwise, ignore it
+                if frameN >= FIXATION_TIME_FRAMES + dur:
+                    spaceEvent = event
+
+        # draw fixation
+        if frameN <= FIXATION_TIME_FRAMES + INTER_FIX_INT and frameN >= INTER_FIX_INT:
+            fixation.setAutoDraw(True)
+        else:
+            fixation.setAutoDraw(False)
+
+        # draw first image1
+        if frameN >= IMAGE1START and frameN <= image1End:
+            image1.setAutoDraw(True)
+        else:
+            image1.setAutoDraw(False)
+
+        if frameN >= image1End:
+            if spaceEvent is not None:
+                if spaceEvent.type == EventConstants.KEYBOARD_RELEASE:
+                    image2.setAutoDraw(False)
+                    space_release = frameN
+                    space_release_t = CurrentTrialClock.getTime()
+                    continueRoutine = False
+                if spaceEvent.type == EventConstants.KEYBOARD_PRESS:
+                    image2.setAutoDraw(True)
+                    space_press = frameN
+                    space_press_t = CurrentTrialClock.getTime()
+                spaceEvent = None
+
+        if continueRoutine:
+            win.flip()
+        frameN += 1
+
+    thisExp.addData('ImageDuration', frameToMS(dur))
+    thisExp.addData('PressDuration', frameToMS(space_release - space_press))
+    thisExp.addData('PressDuration_T', space_release_t - space_press_t)
+    thisExp.addData('PressRT', frameToMS(space_press - image1End))
+    thisExp.addData('PressRT_T', space_press_t - frameToMS(image1End) / 1000)
+    thisExp.addData('Delta', frameToMS(dur) - 1000 * (space_release_t - space_press_t))
+    thisExp.nextEntry()
+
+
+
+
+thisExp.addData('Block 4 Actual Length', section3Clock.getTime())
+section3Clock.reset()
+dlg = gui.DlgFromDict(dictionary=sectionTime, title='Last Question')
+if dlg.OK == False:
+    core.quit()
+
+thisExp.addData('Subject Time Estimation Block 4', sectionTime[question])
+thisExp.nextEntry()
+
+
+
+
+
+ok_data = myDlg.show()
+if myDlg.OK:
+    print (ok_data)
+else:
+    print ('user cancelled')
+
+# Store info about the experiment session
+expName = 'exp1block3'  # from the Builder filename that created this script
+expInfo = {'participant': '', 'session': '001'}
+dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
+if dlg.OK == False: core.quit()  # user pressed cancel
+expInfo['date'] = data.getDateStr()  # add a simple timestamp
+expInfo['expName'] = expName
+
+
+#Close the interface window
+endExpNow()

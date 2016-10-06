@@ -14,11 +14,13 @@ Currently supported grammars are:
 | :----------------------------------- | :--------- | :-------------- | :---- |
 | 1C (BSL)                             | Yes        |                 | Runs through [OneScript](http://oscript.io/) interpreter in console mode |
 | Ansible                              | Yes        |                 | |
+| AutoHotKey                           | Yes        | Yes             | Requires the path of 'AutoHotKey.exe' in your system environment variables.
 | AppleScript                          | Yes        | Yes             | |
 | Babel ES6 JS                         | Yes        | Yes             | |
 | Bash                                 | Yes        | Yes             | The shell used is based on your default `$SHELL` environment variable |
 | Batch                                | Yes        |                 | |
 | Behat Feature                        | Yes        |                 | |
+| BuckleScript                         | Yes        | Yes             | |
 | C                                    | Yes        | Yes             | Only available on OSX (`xcrun clang`) and Linux (`cc`) |
 | C#                                   | Yes        | Yes             | Requires the path of 'csc.exe' in your system environment variables |
 | C# Script                            | Yes        | Yes             | |
@@ -34,6 +36,7 @@ Currently supported grammars are:
 | Elixir                               | Yes        | Yes             | |
 | Erlang                               |            | Yes             | Uses `erl` for limited selection based runs (see [#70](https://github.com/rgbkrk/atom-script/pull/70)) |
 | F#                                   | Yes        |                 | |
+| F*                                   | Yes        |                 | |
 | Fish                                 | Yes        | Yes             | Finally, a way to run code within Atom for the 90s |
 | Forth (via GForth)                   | Yes        |                 | |
 | Fortran (via gfortran)               | Yes        |                 |
@@ -41,6 +44,7 @@ Currently supported grammars are:
 | Go                                   | Yes        |                 | |
 | Groovy                               | Yes        | Yes             | |
 | Haskell                              | Yes        | Yes             | |
+| Hy                                   | Yes        | Yes             | Requires the path of 'hy.exe' in your system environment variables. This is probably already fulfilled if you used `pip install hy` to get Hy. A Hy grammar, such as [this one](https://atom.io/packages/language-hy) is also a good idea. |
 | IcedCoffeeScript                     | Yes        | Yes             | |
 | Inno Setup                           | Yes        |                 | Requires the path of `ISCC.exe` in your system environment variables |
 | [ioLanguage](http://iolanguage.org/) | Yes        | Yes             | |
@@ -59,6 +63,7 @@ Currently supported grammars are:
 | Lua (WoW)                            | Yes        | Yes             | |
 | Makefile                             | Yes        | Yes             | |
 | [MATLAB](http://mathworks.com/products/matlab) | Yes        | Yes   | |
+| MIPS                                 | Yes        |                 | Requires the path of `spim` in your system environment variables |
 | MongoDB                              | Yes        | Yes             | |
 | MoonScript                           | Yes        | Yes             | |
 | [NCL](http://ncl.ucar.edu)           | Yes        | Yes             | Scripts must end with `exit` command for file based runs |
@@ -69,6 +74,7 @@ Currently supported grammars are:
 | Objective-C                          | Yes        |                 | Only available on OSX (`xcrun clang++`) |
 | OCaml                                | Yes        |                 | |
 | Octave                               | Yes        | Yes             | |
+| [Oz](https://mozart.github.io/)      | Yes        | Yes             | |
 | Pandoc Markdown                      | Yes        |                 | Requires the panzer pandoc wrapper https://github.com/msprev/panzer and the pandoc-flavored-markdown language package in Atom https://atom.io/packages/language-pfm |
 | Perl                                 | Yes        | Yes             | |
 | Perl 6                               | Yes        | Yes             | |
@@ -81,6 +87,7 @@ Currently supported grammars are:
 | R                                    | Yes        | Yes             | |
 | Racket                               | Yes        | Yes             | |
 | [RANT](https://github.com/TheBerkin/Rant) | Yes        | Yes             | |
+| Reason                               | Yes        | Yes             | |
 | RSpec                                | Yes        | Yes             | |
 | Ruby                                 | Yes        | Yes             | |
 | Ruby on Rails                        | Yes        | Yes             | |
@@ -131,7 +138,7 @@ Make sure to run `atom` from the command line to get full access to your environ
 
 **Script: Run by Line Number** to run using the specified line number. **Note** that if you select an entire line this number could be off by one due to the way Atom detects numbers while text is selected.
 
-**Script: Run Options** should be used to configure command options, program arguments, and environment variables overrides. Environment variables may be input into the options view in the form `VARIABLE_NAME_ONE=value;VARIABLE_NAME_TWO="other value";VARIABLE_NAME_3='test'`.
+**Script: Configure Script** should be used to configure command options, program arguments, and environment variables overrides. Environment variables may be input into the options view in the form `VARIABLE_NAME_ONE=value;VARIABLE_NAME_TWO="other value";VARIABLE_NAME_3='test'`.
 
 Also, in this dialog you can save options as a profile for future use. For example, you can add two profiles, one for `python2.7` and another for `python3` and run scripts with a specified profile, which will be more convinient than entering options every time you want to switch python versions.
 
