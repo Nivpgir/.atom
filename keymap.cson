@@ -32,7 +32,6 @@
 ".platform-win32 .platform-win32 .command-palette atom-text-editor":
   "alt-x": "command-palette:toggle"
 
-
 ".find-and-replace, .project-find, .project-find .results-view":
   "f4": "find-and-replace:replace-next"
   "shift-f4": "find-and-replace:replace-previous"
@@ -40,9 +39,13 @@
 ".platform-linux .platform-linux .c ommand-palette atom-text-editor":
   "alt-x": "command-palette:toggle"
 
+'body atom-text-editor.autocomplete-active':
+  'ctrl-p': 'autocomplete-plus:move-up'
+  'ctrl-n': 'autocomplete-plus:move-down'
+  'pageup': 'autocomplete-plus:page-up'
+  'pagedown': 'autocomplete-plus:page-down'
+  'home': 'autocomplete-plus:move-to-top'
+  'end': 'autocomplete-plus:move-to-bottom'
 
-# TODO:
-  # - jump paragraphs with ctrl-{direction}
-  # - ctrl-a and ctrl-e to start and end of line
-  # - ctrl-n and ctrl-p for next and previous AC
-  # - alt-x opens command-palette
+  # TODO:
+  
