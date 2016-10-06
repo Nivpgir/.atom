@@ -11,10 +11,15 @@
       "atom-increment"
     ]
   "disable-keybindings":
+    allCommunityPackages: true
+    exceptCommunityPackages: [
+      "atomic-emacs"
+    ]
     prefixKeys: [
       "ctrl-k"
     ]
-  editor: {}
+  editor:
+    fontSize: 15
   "exception-reporting":
     userId: "c4b69301-329b-3983-d305-e395f56f09d4"
   "git-plus": {}
