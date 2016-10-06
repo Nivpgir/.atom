@@ -4,21 +4,16 @@
 "atom-workspace atom-text-editor":
   "ctrl-k ctrl-l": "unset!"
 
-  #"atom-workspace atom-text-editor:not([mini])":
-  #"ctrl-up": "unset!"
-  #"ctrl-down": "unset!"
-
-
 "atom-workspace atom-text-editor:not([mini])":
   "ctrl-up": "editor:move-to-beginning-of-previous-paragraph"
   "ctrl-down": "editor:move-to-beginning-of-next-paragraph"
 
 "body":
 # splitting panes
-  "ctrl-k ctrl-l": "custom:split-right"
-  "ctrl-k ctrl-j": "custom:split-left"
-  "ctrl-k ctrl-i": "custom:split-up"
-  "ctrl-k ctrl-k": "custom:split-down"
+  #{conflicts with emacs' 'kill line'} "ctrl-k ctrl-l": "custom:split-right"
+  #{conflicts with emacs' 'kill line'} "ctrl-k ctrl-j": "custom:split-left"
+  #{conflicts with emacs' 'kill line'} "ctrl-k ctrl-i": "custom:split-up"
+  #{conflicts with emacs' 'kill line'} "ctrl-k ctrl-k": "custom:split-down"
 # focusing panes
   "alt-l": "window:focus-pane-on-right"
   "alt-j": "window:focus-pane-on-left"

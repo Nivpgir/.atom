@@ -1,0 +1,65 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11696-4836-14qxz8b\\package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11696-4836-14qxz8b\\package.tgz",
+        "spec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11696-4836-14qxz8b\\package.tgz",
+        "type": "local"
+      },
+      "C:\\Users\\nivp\\AppData\\Local\\Temp\\apm-install-dir-11696-4836-wig2g1"
+    ]
+  ],
+  "_from": "..\\d-11696-4836-14qxz8b\\package.tgz",
+  "_id": "disable-keybindings@0.6.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/disable-keybindings",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11696-4836-14qxz8b\\package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11696-4836-14qxz8b\\package.tgz",
+    "spec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11696-4836-14qxz8b\\package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:..\\d-11696-4836-14qxz8b\\package.tgz",
+  "_shasum": "9bde0547c1b7c4062378825798107f178d07076e",
+  "_shrinkwrap": null,
+  "_spec": "C:\\Users\\nivp\\AppData\\Local\\Temp\\d-11696-4836-14qxz8b\\package.tgz",
+  "_where": "C:\\Users\\nivp\\AppData\\Local\\Temp\\apm-install-dir-11696-4836-wig2g1",
+  "bugs": {
+    "url": "https://github.com/aki77/atom-disable-keybindings/issues"
+  },
+  "dependencies": {
+    "underscore-plus": "^1.6.0"
+  },
+  "description": "Disables keybindings",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "homepage": "https://github.com/aki77/atom-disable-keybindings#readme",
+  "keywords": [
+    "keybindings"
+  ],
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "disable-keybindings",
+  "optionalDependencies": {},
+  "readme": "# disable-keybindings package\n\nDisables keybindings\n[![Build Status](https://travis-ci.org/aki77/atom-disable-keybindings.svg)](https://travis-ci.org/aki77/atom-disable-keybindings)\n\n## Settings\n\n- `allBundledPackages` (default: false)\n- `bundledPackages` (default: [])\n- `exceptBundledPackages` (default: [])\n- `allCommunityPackages` (default: false)\n- `communityPackages` (default: [])\n- `exceptCommunityPackages` (default: [])\n- `PrefixKeys` (default: [])\n\n[![Gyazo](http://i.gyazo.com/18a6d9f4ffb4371b947e22e9977bbe5a.png)](http://gyazo.com/18a6d9f4ffb4371b947e22e9977bbe5a)\n\n## Commands\n\n- `disable-keybindings:reload`\n- `disable-keybindings:reset`\n\n## Links\n\n- [Bundled prefixed keys bindings delay even if 'unset!' by user keymap · Issue #78 · atom/atom-keymap](https://github.com/atom/atom-keymap/issues/78)\n- [Direct bindings should override prefixes? · Issue #49 · atom/atom-keymap](https://github.com/atom/atom-keymap/issues/49)\n- [Key-binding hell - features - Atom Discussion](https://discuss.atom.io/t/key-binding-hell/12075)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aki77/atom-disable-keybindings.git"
+  },
+  "version": "0.6.0"
+}
