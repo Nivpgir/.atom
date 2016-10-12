@@ -1,0 +1,78 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "C:\\Users\\MNP\\AppData\\Local\\Temp\\d-116912-3792-1tz7ro9\\package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "C:\\Users\\MNP\\AppData\\Local\\Temp\\d-116912-3792-1tz7ro9\\package.tgz",
+        "spec": "C:\\Users\\MNP\\AppData\\Local\\Temp\\d-116912-3792-1tz7ro9\\package.tgz",
+        "type": "local"
+      },
+      "C:\\Users\\MNP\\AppData\\Local\\Temp\\apm-install-dir-116912-3792-tp5fz1"
+    ]
+  ],
+  "_from": "..\\d-116912-3792-1tz7ro9\\package.tgz",
+  "_id": "atom-keyboard-macros@0.9.2",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/atom-keyboard-macros",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "C:\\Users\\MNP\\AppData\\Local\\Temp\\d-116912-3792-1tz7ro9\\package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "C:\\Users\\MNP\\AppData\\Local\\Temp\\d-116912-3792-1tz7ro9\\package.tgz",
+    "spec": "C:\\Users\\MNP\\AppData\\Local\\Temp\\d-116912-3792-1tz7ro9\\package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:..\\d-116912-3792-1tz7ro9\\package.tgz",
+  "_shasum": "c45269463b6ae9b2baf70c119f8f0bfa0bc27ffc",
+  "_shrinkwrap": null,
+  "_spec": "C:\\Users\\MNP\\AppData\\Local\\Temp\\d-116912-3792-1tz7ro9\\package.tgz",
+  "_where": "C:\\Users\\MNP\\AppData\\Local\\Temp\\apm-install-dir-116912-3792-tp5fz1",
+  "activationCommands": {
+    "atom-workspace": [
+      "atom-keyboard-macros:start_kbd_macro",
+      "atom-keyboard-macros:end_kbd_macro",
+      "atom-keyboard-macros:call_last_kbd_macro",
+      "atom-keyboard-macros:repeat_last_kbd_macro",
+      "atom-keyboard-macros:toggle",
+      "atom-keyboard-macros:quick_save",
+      "atom-keyboard-macros:quick_load",
+      "atom-keyboard-macros:save",
+      "atom-keyboard-macros:load"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/JunSuzukiJapan/atom-keyboard-macros/issues"
+  },
+  "dependencies": {
+    "atom-space-pen-views": "^2.1.1",
+    "fuzzaldrin": "^2.1.0",
+    "fuzzaldrin-plus": "^0.3.1"
+  },
+  "description": "keyboard macro extension for Atom.",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/JunSuzukiJapan/atom-keyboard-macros#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "./lib/atom-keyboard-macros",
+  "name": "atom-keyboard-macros",
+  "optionalDependencies": {},
+  "readme": "# atom-keyboard-macros package\n\nKeyboard macro extension for Atom.\n\n# New Features\n\nIn version 0.6.0 or later, it also records the operation of the search & replace view.\n\n# Shortcuts\n\n```ctrl-x (```  start recording\n\n```ctrl-x )```  stop recording\n\n```ctrl-x e```  execute macro\n\n```ctrl-x ctrl-e```  execute macro N times\n\n```ctrl-x b```  execute macro to the end of file\n\n```ctrl-x ctrl-b``` execute macro from the beginning to the end of file\n\n# Other Methods\n\n- atom-keyboard-macros:name_last_kbd_macro\n    Give a command name to the most recently defined keyboard macro.\n    You can execute it, in command palette, use 'atom-keyboard-macros:{a-command-name}'.\n\n- atom-keyboard-macros:execute_named_macro\n    Execute a named keyboard macro(see atom-keyboard-macros:name_last_kbd_macro).\n\n- atom-keyboard-macros:save\n    Save all named macros\n\n- atom-keyboard-macros:quick_save\n    Quick save all named macros\n\n- atom-keyboard-macros:load\n    Load saved macros\n\n- atom-keyboard-macros:quick_load\n    Load quick_saved macros\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JunSuzukiJapan/atom-keyboard-macros.git"
+  },
+  "version": "0.9.2"
+}

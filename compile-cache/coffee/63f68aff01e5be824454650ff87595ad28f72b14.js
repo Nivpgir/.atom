@@ -1,0 +1,47 @@
+(function() {
+  module.exports = {
+    initialize: function() {
+      this._killed = this.killing = false;
+      this._yanked = this.yanking = false;
+      this.previousCommand = null;
+      this.recenters = 0;
+      return this._recentered = false;
+    },
+    beforeCommand: function(event) {
+      return this.isDuringCommand = true;
+    },
+    afterCommand: function(event) {
+      if ((this.killing = this._killed)) {
+        this._killed = false;
+      }
+      if ((this.yanking = this._yanked)) {
+        this._yanked = false;
+      }
+      if (this._recentered) {
+        this._recentered = false;
+        this.recenters = (this.recenters + 1) % 3;
+      } else {
+        this.recenters = 0;
+      }
+      this.previousCommand = event.type;
+      return this.isDuringCommand = false;
+    },
+    killed: function() {
+      return this._killed = true;
+    },
+    yanked: function() {
+      return this._yanked = true;
+    },
+    recentered: function() {
+      return this._recentered = true;
+    },
+    yankComplete: function() {
+      return this.yanking && !this._yanked;
+    }
+  };
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAiZmlsZSI6ICIiLAogICJzb3VyY2VSb290IjogIiIsCiAgInNvdXJjZXMiOiBbCiAgICAiZmlsZTovLy9DOi9Vc2Vycy9NTlAvLmF0b20vcGFja2FnZXMvYXRvbWljLWVtYWNzL2xpYi9zdGF0ZS5jb2ZmZWUiCiAgXSwKICAibmFtZXMiOiBbXSwKICAibWFwcGluZ3MiOiAiQUFBQTtBQUFBLEVBQUEsTUFBTSxDQUFDLE9BQVAsR0FDRTtBQUFBLElBQUEsVUFBQSxFQUFZLFNBQUEsR0FBQTtBQUNWLE1BQUEsSUFBQyxDQUFBLE9BQUQsR0FBVyxJQUFDLENBQUEsT0FBRCxHQUFXLEtBQXRCLENBQUE7QUFBQSxNQUNBLElBQUMsQ0FBQSxPQUFELEdBQVcsSUFBQyxDQUFBLE9BQUQsR0FBVyxLQUR0QixDQUFBO0FBQUEsTUFFQSxJQUFDLENBQUEsZUFBRCxHQUFtQixJQUZuQixDQUFBO0FBQUEsTUFHQSxJQUFDLENBQUEsU0FBRCxHQUFhLENBSGIsQ0FBQTthQUlBLElBQUMsQ0FBQSxXQUFELEdBQWUsTUFMTDtJQUFBLENBQVo7QUFBQSxJQU9BLGFBQUEsRUFBZSxTQUFDLEtBQUQsR0FBQTthQUNiLElBQUMsQ0FBQSxlQUFELEdBQW1CLEtBRE47SUFBQSxDQVBmO0FBQUEsSUFVQSxZQUFBLEVBQWMsU0FBQyxLQUFELEdBQUE7QUFDWixNQUFBLElBQUcsQ0FBQyxJQUFDLENBQUEsT0FBRCxHQUFXLElBQUMsQ0FBQSxPQUFiLENBQUg7QUFDRSxRQUFBLElBQUMsQ0FBQSxPQUFELEdBQVcsS0FBWCxDQURGO09BQUE7QUFHQSxNQUFBLElBQUcsQ0FBQyxJQUFDLENBQUEsT0FBRCxHQUFXLElBQUMsQ0FBQSxPQUFiLENBQUg7QUFDRSxRQUFBLElBQUMsQ0FBQSxPQUFELEdBQVcsS0FBWCxDQURGO09BSEE7QUFNQSxNQUFBLElBQUcsSUFBQyxDQUFBLFdBQUo7QUFDRSxRQUFBLElBQUMsQ0FBQSxXQUFELEdBQWUsS0FBZixDQUFBO0FBQUEsUUFDQSxJQUFDLENBQUEsU0FBRCxHQUFhLENBQUMsSUFBQyxDQUFBLFNBQUQsR0FBYSxDQUFkLENBQUEsR0FBbUIsQ0FEaEMsQ0FERjtPQUFBLE1BQUE7QUFJRSxRQUFBLElBQUMsQ0FBQSxTQUFELEdBQWEsQ0FBYixDQUpGO09BTkE7QUFBQSxNQVlBLElBQUMsQ0FBQSxlQUFELEdBQW1CLEtBQUssQ0FBQyxJQVp6QixDQUFBO2FBYUEsSUFBQyxDQUFBLGVBQUQsR0FBbUIsTUFkUDtJQUFBLENBVmQ7QUFBQSxJQTBCQSxNQUFBLEVBQVEsU0FBQSxHQUFBO2FBQ04sSUFBQyxDQUFBLE9BQUQsR0FBVyxLQURMO0lBQUEsQ0ExQlI7QUFBQSxJQTZCQSxNQUFBLEVBQVEsU0FBQSxHQUFBO2FBQ04sSUFBQyxDQUFBLE9BQUQsR0FBVyxLQURMO0lBQUEsQ0E3QlI7QUFBQSxJQWdDQSxVQUFBLEVBQVksU0FBQSxHQUFBO2FBQ1YsSUFBQyxDQUFBLFdBQUQsR0FBZSxLQURMO0lBQUEsQ0FoQ1o7QUFBQSxJQW1DQSxZQUFBLEVBQWMsU0FBQSxHQUFBO2FBQUcsSUFBQyxDQUFBLE9BQUQsSUFBYSxDQUFBLElBQUssQ0FBQSxRQUFyQjtJQUFBLENBbkNkO0dBREYsQ0FBQTtBQUFBIgp9
+
+//# sourceURL=/C:/Users/MNP/.atom/packages/atomic-emacs/lib/state.coffee
