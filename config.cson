@@ -11,6 +11,7 @@
       "atom-increment"
     ]
   "disable-keybindings":
+    allBundledPackages: true
     allCommunityPackages: true
     exceptCommunityPackages: [
       "atomic-emacs"
